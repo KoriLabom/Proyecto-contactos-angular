@@ -1,0 +1,11 @@
+
+#Sidebar{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    min-height: 100vh;
+    background-color: aqua;
+}
+router-outlet{
+    width: 80%;
+}
