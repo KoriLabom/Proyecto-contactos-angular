@@ -1,10 +1,15 @@
 span{
     width: 20%;
+    border-left: 1px solid black;
+    text-align: center;
 }
-#lista-contactos{
+#list-top{
+    background-color: #067d88;
+    border: 1px solid black;
+}
+.d-flex{
     display: flex;
-    width: 100%;
 }
-body{
-    width: 100%;
+.flex-col{
+    flex-direction: column;
 }

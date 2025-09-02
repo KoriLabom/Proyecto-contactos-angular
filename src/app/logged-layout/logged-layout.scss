@@ -4,8 +4,17 @@
     flex-direction: column;
     width: 20%;
     min-height: 100vh;
-    background-color: aqua;
+    background-color: #036c77;
+    color: white;
 }
-router-outlet{
+header{
+    background-color: #036c77;
+    color: white;
+    height: 20%;
+}
+#content{
     width: 80%;
+}
+.d-flex{
+    display: flex;
 }
