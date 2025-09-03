@@ -1,0 +1,26 @@
+<div class="flex-col d-flex">
+    <div id="list-top" class="d-flex ">
+        <span>Nombre</span>
+        <span>Telefono</span>
+        <span>Email</span>
+        <span>Grupos</span>
+        <span>Acciones</span>
+    </div>
+    
+    <ul>
+        @for (contact of contacts.contacts; track $index) {
+            <app-contact-list-item [contact]="contact"></app-contact-list-item>
+        }
+        
+    </ul>
+    <form (ngSubmit)="createContact(newContactForm.value)" #newContactForm="ngForm">
+        <input type="text" name="firstName" id="first-name" ngModel required="true" maxlength="50">
+        <input type="text" name="lastName" id="last-name" ngModel>
+        <input type="text" name="number" id="number" ngModel required="true" minlength="3">
+        <input type="text" name="address" id="address" ngModel>
+        <input type="text" name="email" id="email" ngModel>
+        <input type="text" name="image" id="image" ngModel>
+        <input type="text" name="company" id="company" ngModel>
+        <button [disabled]="newContactForm.disabled">+</button>
+    </form>
+</div>

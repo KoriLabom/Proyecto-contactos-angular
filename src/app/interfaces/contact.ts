@@ -1,4 +1,5 @@
 export interface Contact{
+    id:number,
     firstName:string,
     lastName:string,
     address:string,
@@ -6,5 +7,5 @@ export interface Contact{
     image: string,
     number: string,
     company:string,
-    isFavourite:boolean
+    isFavourite?:boolean
 }

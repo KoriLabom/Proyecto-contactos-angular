@@ -5,9 +5,22 @@
 
 
 <div id="Sidebar">
-    <a routerLink="contactos">Contactos</a>
-    <a routerLink="grupos">Grupos</a>
-    <a routerLink="login">login</a>
+    @if (isContactos()) {
+        <a routerLink="contactos" class="selected">Contactos</a>
+        <a routerLink="grupos" >Grupos</a>
+        <a routerLink="login">login</a>
+    }
+    @else if (isGrupos()) {
+        <a routerLink="contactos" class="selected">Contactos</a>
+        <a routerLink="grupos" >Grupos</a>
+        <a routerLink="login">login</a>
+    }
+    @else {
+        <a routerLink="contactos">Contactos</a>
+        <a routerLink="grupos" >Grupos</a>
+        <a routerLink="login">login</a>
+    }
+    
 </div>
 <div id="content">
 <router-outlet></router-outlet>

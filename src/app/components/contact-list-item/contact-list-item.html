@@ -3,5 +3,5 @@
 <span>{{contact().number}}</span>
 <span>{{contact().email}}</span>
 <span></span>
-<span></span>
+<span><button (click)="contactsService.deleteContact(contact().id)">Delete</button></span>
 </div>

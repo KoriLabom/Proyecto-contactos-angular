@@ -1,6 +1,6 @@
 form{
     margin-top: 20vh;
-    background-color: rgb(255, 194, 120);
+    background-color: #036c77;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -9,6 +9,7 @@ form{
     justify-content: center;
     width: 33%;
     padding: 24px 0px 24px 0px;
+    color: white;
 }
 form>*{
     margin-bottom: 4px;
@@ -16,16 +17,20 @@ form>*{
 }
 input{
     padding: 6px 24px 6px 24px;
-    background-color: rgb(255, 224, 185);
+    background-color: #34848d;
+    color: white;
     border-radius: 15px;
     margin-top: 8px;
+}
+input::placeholder{
+    color: rgb(71, 71, 71);
 }
 .log-in{
     display: flex;
     justify-content: center;
 }
 button{
-    background-color: rgb(255, 169, 64);
+    background-color: #005a65;
     padding: 6px 24px;
     border-radius: 10px;
     margin-top: 8px;

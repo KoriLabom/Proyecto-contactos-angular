@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { LoginComponente } from './pages/login-componente/login-componente';
-import { RegisterComponente } from './register-componente/register-componente';
+import { RegisterComponente } from './components/register-componente/register-componente';
 import { LoggedLayout } from './logged-layout/logged-layout';
-import { ContactosComponente } from './contactos-componente/contactos-componente';
+import { ContactosComponente } from './components/contactos-componente/contactos-componente';
 
 export const routes: Routes = [
     {
