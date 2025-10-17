@@ -1,5 +1,5 @@
 export interface Contact{
-    id:number,
+    id:string,
     firstName:string,
     lastName:string,
     address:string,
@@ -7,5 +7,6 @@ export interface Contact{
     image: string,
     number: string,
     company:string,
-    isFavourite?:boolean
+    isFavorite?:boolean
 }
+export type NewContact = Omit<Contact,"id">;

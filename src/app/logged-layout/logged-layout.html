@@ -9,6 +9,7 @@
         <a routerLink="contactos" class="selected">Contactos</a>
         <a routerLink="grupos" >Grupos</a>
         <a routerLink="login">login</a>
+        <button (click)="authservice.logout()">Logout</button>
     }
     @else if (isGrupos()) {
         <a routerLink="contactos" class="selected">Contactos</a>
@@ -19,6 +20,7 @@
         <a routerLink="contactos">Contactos</a>
         <a routerLink="grupos" >Grupos</a>
         <a routerLink="login">login</a>
+
     }
     
 </div>

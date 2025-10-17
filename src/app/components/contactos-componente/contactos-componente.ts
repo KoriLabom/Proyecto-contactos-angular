@@ -1,8 +1,10 @@
-import { Component, inject } from '@angular/core';
-import { ContactListItem } from '../contact-list-item/contact-list-item';
+import { Component, inject, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { ContactListItem } from '../../components/contact-list-item/contact-list-item';
+import { Contact, NewContact } from '../../interfaces/contact';
+import { AuthService } from '../../services/auth-service';
 import { ContactsService } from '../../services/contacts-service';
 import { FormsModule } from '@angular/forms';
-import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-contactos-componente',
@@ -10,23 +12,12 @@ import { firstValueFrom } from 'rxjs';
   templateUrl: './contactos-componente.html',
   styleUrl: './contactos-componente.scss'
 })
-export class ContactosComponente {
-  contacts=inject(ContactsService)
-arg1: string="";
-arg2: string="";
-arg3: string="";
-arg4: string="";
-arg5: string="";
-arg6: string="";
-arg7: string="";
-  createContact(form:any){
-    let firstName=form.firstName
-    let lastName=form.lastName
-    let address=form.address
-    let email=form.email
-    let image=form.image
-    let number=form.number
-    let company=form.company
-    this.contacts.createContact(firstName,lastName,address,email,image,number,company)
+export class ContactosComponente implements OnInit {
+  ngOnInit(): void {
+    this.contactsService.getContacts();
   }
+
+  authService = inject(AuthService);
+  contactsService = inject(ContactsService);
+
 }

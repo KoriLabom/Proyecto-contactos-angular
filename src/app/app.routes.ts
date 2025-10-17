@@ -3,6 +3,7 @@ import { LoginComponente } from './pages/login-componente/login-componente';
 import { RegisterComponente } from './components/register-componente/register-componente';
 import { LoggedLayout } from './logged-layout/logged-layout';
 import { ContactosComponente } from './components/contactos-componente/contactos-componente';
+import { NewEditContact } from './pages/new-edit-contact/new-edit-contact';
 
 export const routes: Routes = [
     {
@@ -23,5 +24,16 @@ export const routes: Routes = [
             }
         ]
         
-    }
+    },
+    {
+        path: "contactos/new",
+        component: NewEditContact
+    },
+    {
+        path: "contacts/:idContacto/edit",
+        component: NewEditContact
+      },{
+        path: "contacts/new",
+        component: NewEditContact
+      },
 ];
