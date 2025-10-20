@@ -1,20 +1,21 @@
-import { inject, Injectable } from '@angular/core';
-import { User } from '../interfaces/user';
-import { Router } from '@angular/router';
-import { LoginData } from '../interfaces/auth';
+import { Injectable } from '@angular/core';
+import { NewUser } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UsersService {
   
-  
-  user:User[]=[
-    {
-      firstName:"",
-      lastName:"",
-      password:"",
-      email:""
-    }
-  ]
+  /** Registar el usuario en el back */
+  async register(registerData:NewUser){
+    return await fetch("https://agenda-api.somee.com/api/Users", 
+      {
+        method:"POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(registerData)
+      });
   }
+
+}

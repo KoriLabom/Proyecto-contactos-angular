@@ -1,19 +1,43 @@
-@if(cargandoContacto){
-  <p>Cargando contacto...</p><app-spinner></app-spinner>
+@if(cargandoContacto) {
+  <div class="loading-state">
+    <app-spinner></app-spinner>
+    <p>Cargando contacto...</p>
+  </div>
 } @else if(!contacto) {
-  <p>No se encontró el contacto</p>
+  <div class="empty-state">
+    <h2>No se encontró el contacto</h2>
+    <a routerLink="/contacts" class="btn btn--ghost">Volver</a>
+  </div>
 } @else {
-  <h1>{{contacto!.firstName}} {{contacto!.lastName}}</h1>
-  <p>Email: {{contacto.email}}</p>
-  <p>Teléfono: {{contacto.number}}</p>
-@if (contacto.isFavorite) {
-  <p>⭐</p>
-  <button (click)="toggleFavorite()">Desmarcar favorito</button>
-} @else {
-  <button (click)="toggleFavorite()">Marcar como favorito</button>
-}
-  <p>
-    <a [routerLink]="['/contacts',idContacto(),'edit']">Editar</a>
-  </p>
-  <button (click)="deleteContact()">Eliminar</button>
+  <div class="contact-view">
+    <div class="contact-card">
+      <div class="contact-header">
+        <div class="contact-avatar">
+            <div class="avatar-fallback">{{ contacto.firstName[0] }}{{ contacto.lastName[0] }}</div>
+        </div>
+
+        <div class="contact-info">
+          <h1>{{ contacto.firstName }} {{ contacto.lastName }}</h1>
+          <p class="contact-company">{{ contacto.company || 'Sin compañía' }}</p>
+        </div>
+      </div>
+
+      <div class="contact-body">
+        <p><strong>Email:</strong> {{ contacto.email || 'No especificado' }}</p>
+        <p><strong>Teléfono:</strong> {{ contacto.number || 'No especificado' }}</p>
+        <p><strong>Dirección:</strong> {{ contacto.address || 'No especificada' }}</p>
+      </div>
+
+      <div class="contact-actions">
+        @if (contacto.isFavorite) {
+          <button class="btn btn--gold" (click)="toggleFavorite()">⭐ Quitar de favoritos</button>
+        } @else {
+          <button class="btn" (click)="toggleFavorite()">Marcar como favorito</button>
+        }
+
+        <a [routerLink]="['/contacts', idContacto(), 'edit']" class="btn btn--edit">Editar</a>
+        <button class="btn btn--danger" (click)="deleteContact()">Eliminar</button>
+      </div>
+    </div>
+  </div>
 }

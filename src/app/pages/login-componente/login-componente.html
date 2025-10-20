@@ -1,13 +1,22 @@
 <div class="log-in">
     <form (ngSubmit)="login(logInForm.value)" #logInForm="ngForm">
+      <h1>Log In</h1>
+      <div>
+        <label for="email">Email</label>
         <input type="text" name="email" id="email" ngModel required="true" maxlength="50">
+      </div>
+      <div>
+        <label for="password">Contraseña</label>
         <input type="password" name="password" id="password" ngModel required="true" minlength="6">
+      </div>
         <button [disabled]="isLoading || logInForm.invalid">Iniciar sesión</button>
   @if(isLoading){
     <app-spinner></app-spinner>
+
   }
   @if (errorLogin) {
     <p class="error">Datos de sesión incorrectos, intente nuevamente.</p>
   } 
+  <p>No tenés cuenta? <a routerLink="/register">Registrate</a></p>
     </form>
 </div>

@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { UserService } from '../../services/user-service';
+import { UsersService } from '../../services/user-service';
 import { FormsModule } from '@angular/forms';
 import { LoginData } from '../../interfaces/auth';
 import { AuthService } from '../../services/auth-service';
 import { Spinner } from "../../components/spinner/spinner";
 import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-login-componente',
   imports: [FormsModule, Spinner, RouterModule],
@@ -26,5 +27,6 @@ export class LoginComponente {
     await this.auth.login(logindata);
     this.isLoading = false;
     this.errorLogin = true;
+    
   }
 }

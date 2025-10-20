@@ -1,5 +1,5 @@
 span{
-    width: 20%;
+    
     height: 40px;
     border-left: 1px solid black;
     text-align: center;
@@ -14,4 +14,25 @@ span{
 }
 .flex-col{
     flex-direction: column;
+}
+.w5{
+    width: 5%;
+}
+.w10{
+    width: 10%;
+}
+.w25{
+    width: 25%;
+}
+.w30{
+    width: 30%;
+}
+.w15{
+    width: 15%;
+}
+.w20{
+    width: 20%;
+}
+.p20{
+    padding: 20px;
 }

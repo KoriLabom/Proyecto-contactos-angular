@@ -6,6 +6,7 @@ import { ContactosComponente } from './pages/contactos-componente/contactos-comp
 import { NewEditContact } from './pages/new-edit-contact/new-edit-contact';
 import { onlyUserGuard } from './guards/only-logged-user-guard';
 import { ContactDetailsPage } from './pages/contact-details-page/contact-details-page';
+import { GroupsComponent } from './pages/groups-component/groups-component';
 export const routes: Routes = [
     {
         path: "login",
@@ -27,28 +28,29 @@ export const routes: Routes = [
             {
                 path: "contactos",
                 component: ContactosComponente
+            },
+            {
+                path: "contactos/new",
+                component: NewEditContact,
+            },
+            {
+                path: "contacts/:idContacto/edit",
+                component: NewEditContact,
+            },
+            {
+                path: "contacts/new",
+                component: NewEditContact,
+            },
+            {
+                path: "contacts/:idContacto",
+                component: ContactDetailsPage,
+            },
+            {
+                path: "grupos",
+                component: GroupsComponent
             }
         ],
         canActivate: [onlyUserGuard]
         
-    },
-    {
-        path: "contactos/new",
-        component: NewEditContact,
-        canActivate: [onlyUserGuard]
-    },
-    {
-        path: "contacts/:idContacto/edit",
-        component: NewEditContact,
-        canActivate: [onlyUserGuard]
-      },{
-        path: "contacts/new",
-        component: NewEditContact,
-        canActivate: [onlyUserGuard]
-      },
-      {
-        path: "contacts/:idContacto",
-        component: ContactDetailsPage,
-        canActivate: [onlyUserGuard]
-      }
+    }
 ];

@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Contact, NewContact } from '../interfaces/contact';
 import { AuthService } from './auth-service';
-
+import Swal from 'sweetalert2';
 @Injectable({
   providedIn: 'root'
 })
@@ -73,18 +73,56 @@ export class ContactsService {
   }
 
   /** Borra un contacto */
-  async deleteContact(id:string) {
-    const res=await fetch(this.URL_BASE+'/'+id,
-      {
-        method: "DELETE",
-        headers:{
-          Authorization: "Bearer "+this.authService.token,
-        },
+async deleteContact(id: string) {
+  const result = await Swal.fire({
+    title: "¿Estás seguro?",
+    text: "¡No vas a poder revertir esta acción!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sí, eliminar",
+    cancelButtonText: "Cancelar"
+  });
+
+  if (result.isConfirmed) {
+    const res = await fetch(this.URL_BASE + '/' + id, {
+      method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + this.authService.token,
+      },
+    });
+
+    if (!res.ok) {
+      Swal.fire({
+        title: "Error",
+        text: "Hubo un problema al eliminar el contacto.",
+        icon: "error"
       });
-    if(!res.ok) return;
-    this.contacts = this.contacts.filter(contact=>contact.id!==id);
+      return false;
+    }
+
+
+    this.contacts = this.contacts.filter(contact => contact.id !== id);
+
+
+    await Swal.fire({
+      title: "Eliminado",
+      text: "El contacto fue eliminado correctamente.",
+      icon: "success"
+    });
+
     return true;
+  } else {
+
+    Swal.fire({
+      title: "Cancelado",
+      text: "El contacto no fue eliminado.",
+      icon: "info"
+    });
+    return false;
   }
+}
 
   async setFavourite(id:string) {
     const res = await fetch(this.URL_BASE+'/'+id+'/favorite',

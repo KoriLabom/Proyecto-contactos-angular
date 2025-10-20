@@ -3,6 +3,7 @@ import { Form, FormsModule, NgForm } from '@angular/forms';
 import { Contact, NewContact } from '../../interfaces/contact';
 import { ContactsService } from '../../services/contacts-service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-edit-contact',
@@ -35,34 +36,51 @@ export class NewEditContact implements OnInit {
     }
   }
 
-async handleFormSubmission(form:NgForm){
+async handleFormSubmission(form: NgForm) {
   this.errorEnBack = false;
-    const nuevoContacto: NewContact ={
-      firstName: form.value.firstName,
-      lastName: form.value.lastName,
-      address: form.value.address,
-      email: form.value.email,
-      image: form.value.image,
-      number: form.value.number,
-      company: form.value.company,
-      isFavorite: form.value.isFavourite
-    }
-    
+
+  const nuevoContacto: NewContact = {
+    firstName: form.value.firstName,
+    lastName: form.value.lastName,
+    address: form.value.address,
+    email: form.value.email,
+    image: form.value.image,
+    number: form.value.number,
+    company: form.value.company,
+    isFavorite: form.value.isFavourite
+  };
+
+  const result = await Swal.fire({
+    title: this.idContacto()
+      ? "¿Querés guardar los cambios?"
+      : "¿Querés crear este nuevo contacto?",
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: "Guardar",
+    denyButtonText: "No guardar"
+  });
+
+  if (result.isConfirmed) {
     let res;
-    
-    this.router.navigate(["/contactos"]);
-    if(this.idContacto()){
-      res = await this.contactsService.editContact({...nuevoContacto,id:this.idContacto()!.toString()});
+    if (this.idContacto()) {
+      res = await this.contactsService.editContact({
+        ...nuevoContacto,
+        id: this.idContacto()!.toString()
+      });
     } else {
       res = await this.contactsService.createContact(nuevoContacto);
     }
-  
-  if(!res) {
+
+    if (!res) {
       this.errorEnBack = true;
-      return
-    };
+      return;
+    }
+
+    await Swal.fire("¡Guardado!", "", "success");
+    this.router.navigate(['/contactos']);
+  } else if (result.isDenied) {
+    await Swal.fire("Los cambios no se guardaron", "", "info");
   }
-  async createContact(form:NgForm){
-    
-  }
+}
+
 }
