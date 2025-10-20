@@ -5,6 +5,7 @@ import { LoggedLayout } from './logged-layout/logged-layout';
 import { ContactosComponente } from './pages/contactos-componente/contactos-componente';
 import { NewEditContact } from './pages/new-edit-contact/new-edit-contact';
 import { onlyUserGuard } from './guards/only-logged-user-guard';
+import { ContactDetailsPage } from './pages/contact-details-page/contact-details-page';
 export const routes: Routes = [
     {
         path: "login",
@@ -45,4 +46,9 @@ export const routes: Routes = [
         component: NewEditContact,
         canActivate: [onlyUserGuard]
       },
+      {
+        path: "contacts/:idContacto",
+        component: ContactDetailsPage,
+        canActivate: [onlyUserGuard]
+      }
 ];

@@ -6,5 +6,6 @@
 <span>
     <button (click)="contactsService.deleteContact(contact().id)">Delete</button> 
     <a [routerLink]="['/contacts', contact().id, 'edit']">Edit</a>
+    <a [routerLink]="['/contacts',contact().id]">Details</a>
 </span>
 </div>
