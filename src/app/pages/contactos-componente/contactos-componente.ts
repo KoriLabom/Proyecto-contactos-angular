@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, RouterLink } from '@angular/router';
 import { ContactListItem } from '../../components/contact-list-item/contact-list-item';
 import { Contact, NewContact } from '../../interfaces/contact';
 import { AuthService } from '../../services/auth-service';
@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-contactos-componente',
-  imports: [ContactListItem, FormsModule],
+  imports: [ContactListItem, FormsModule, RouterLink, RouterModule],
   templateUrl: './contactos-componente.html',
   styleUrl: './contactos-componente.scss'
 })
