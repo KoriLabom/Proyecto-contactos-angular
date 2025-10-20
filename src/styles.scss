@@ -12,6 +12,11 @@
   --color3: #F2F2F2; /* Fondo claro */
   --color4: #333333; /* Texto principal */
   --color5: #27AE60; /* Éxito - verde */
+  --color6: #EB5757; /* Error - rojo */
+  --color7: #F2994A; /* Advertencia - amarillo */
+  --color8: #2D9CDB; /* Información - celeste */
+  --color9: #6C757D; /* Gris - neutro */
+  --color10: #1ca504; /* verde  */
 }
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -33,7 +38,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
+
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -41,7 +46,9 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 	width: 100%;
-	background-color: #0ca0ab;
+	background-color: var(--color1);
+	color: var(--color4);
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 ol, ul {
 	list-style: none;

@@ -1,11 +1,12 @@
 <!-- Toda la parte de nuevo contacto luego irá en una nueva pestaña o en una ventana emergente. A elección. -->
 <div id="container" class="card">
- @if (idContacto()) {
+ 
+ <form (ngSubmit)="handleFormSubmission(newContactForm)" #newContactForm="ngForm">
+  @if (idContacto()) {
    <h2>Editar contacto</h2>
  } @else {
    <h2>Nuevo contacto</h2>
  }
- <form (ngSubmit)="handleFormSubmission(newContactForm)" #newContactForm="ngForm">
   <div>
     <label for="first-name">Nombre*</label>
     <input id="first-name" name="firstName" type="text" ngModel required="true" minlength="2" maxlength="20" #firstName="ngModel">

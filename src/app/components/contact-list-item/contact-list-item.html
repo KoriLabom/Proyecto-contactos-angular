@@ -1,11 +1,11 @@
 <div id="contacto">
-<span class="w30">{{contact().firstName}}{{contact().lastName}}</span>
-<span class="w15">{{contact().number}}</span>
-<span class="w30">{{contact().email}}</span>
-<span class="w10"></span>
-<span class="w15">
-    <button (click)="contactsService.deleteContact(contact().id)">Delete</button> 
+  <span class="w30">{{ contact().firstName }} {{ contact().lastName }}</span>
+  <span class="w15">{{ contact().number }}</span>
+  <span class="w30">{{ contact().email }}</span>
+  <span class="w10"></span>
+  <span class="w15 acciones">
+    <button class="delete" (click)="contactsService.deleteContact(contact().id)">Delete</button>
     <a [routerLink]="['/contacts', contact().id, 'edit']">Edit</a>
-    <a [routerLink]="['/contacts',contact().id]">Details</a>
-</span>
+    <a [routerLink]="['/contacts', contact().id]">Details</a>
+  </span>
 </div>

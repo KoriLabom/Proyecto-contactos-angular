@@ -1,38 +1,129 @@
-span{
-    
-    height: 40px;
-    border-left: 1px solid black;
-    text-align: center;
-    align-content: center;
+
+.d-flex { display: flex; }
+.flex-col { flex-direction: column; gap: 12px; }
+.p20 { padding: 20px; }
+
+
+.d-flex.flex-col.p20 {
+  max-width: 1100px;
+  margin: 0 auto;
 }
-#list-top{
-    background-color: #067d88;
-    border: 1px solid black;
+
+
+#list-top {
+  position: sticky;
+  top: 0;                 
+  z-index: 5;
+  background: var(--color1);
+  color: #fff;
+  padding: 12px 16px;
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  display: grid;          
+  grid-template-columns: 30% 15% 30% 10% 15%;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
 }
-.d-flex{
-    display: flex;
+
+
+ul {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  border: 1px solid var(--color9);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
 }
-.flex-col{
-    flex-direction: column;
+
+
+ul > app-contact-list-item {
+  display: contents;
 }
-.w5{
-    width: 5%;
+
+
+ul > app-contact-list-item > * {
+  display: grid;
+  grid-template-columns: 30% 15% 30% 10% 15%;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--color9);
 }
-.w10{
-    width: 10%;
+
+
+ul > app-contact-list-item:first-child > * {
+  border-top: none;
 }
-.w25{
-    width: 25%;
+
+
+ul > app-contact-list-item:nth-child(odd) > * {
+  background: #fafafa;
 }
-.w30{
-    width: 30%;
+ul > app-contact-list-item > *:hover {
+  background: rgba(11,133,203,0.06); 
 }
-.w15{
-    width: 15%;
+
+
+#list-top span,
+ul > app-contact-list-item > * > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-.w20{
-    width: 20%;
+
+
+ul > app-contact-list-item > * > span:last-child,
+ul > app-contact-list-item > * .acciones {
+  justify-self: end;
+  display: inline-flex;
+  gap: 8px;
 }
-.p20{
-    padding: 20px;
+
+
+ul > app-contact-list-item button,
+ul > app-contact-list-item a.btn {
+  appearance: none;
+  border: 1px solid var(--color9);
+  background: #fff;
+  color: var(--color4);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .06s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+}
+ul > app-contact-list-item button:hover,
+ul > app-contact-list-item a.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0,0,0,.08);
+  border-color: var(--color1);
+}
+
+
+a[routerLink="/contactos/new"] {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--color5);
+  color: #fff;
+  font-size: 22px;
+  text-decoration: none;
+  border: none;
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  transition: transform .08s ease, box-shadow .2s ease, background-color .2s ease;
+  z-index: 30;
+}
+a[routerLink="/contactos/new"]:hover {
+  transform: translateY(-2px);
+  background: var(--color10);
+  box-shadow: 0 14px 28px rgba(0,0,0,.22);
 }

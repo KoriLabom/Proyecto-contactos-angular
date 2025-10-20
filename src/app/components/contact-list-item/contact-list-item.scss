@@ -1,31 +1,74 @@
-span{
-    height: 40px;
-    border-left: 0.5px solid black;
-    align-content: center;
-    padding: 15px;
-    box-sizing: border-box;
 
+#contacto {
+  display: grid;
+  grid-template-columns: 30% 15% 30% 10% 15%;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--color9);
+  background: #fff;
+  transition: background-color .2s ease;
 }
-#contacto{
-    background-color: #0ca0ab;  
-    display: flex;
-    border: 0.5px solid black ;
+
+
+#contacto:hover {
+  background: rgba(11,133,203,0.06); 
 }
-.w5{
-    width: 5%;
+
+
+#contacto > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-.w10{
-    width: 10%;
+
+
+#contacto > .acciones {
+  justify-self: end;
+  display: inline-flex;
+  gap: 8px;
 }
-.w25{
-    width: 25%;
+
+
+#contacto > span:last-child {
+  justify-self: end;
+  display: inline-flex;
+  gap: 8px;
 }
-.w30{
-    width: 30%;
+
+
+#contacto button,
+#contacto a {
+  appearance: none;
+  border: 1px solid var(--color9);
+  background: #fff;
+  color: var(--color4);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .06s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
 }
-.w15{
-    width: 15%;
+
+#contacto button:hover,
+#contacto a:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0,0,0,.08);
+  border-color: var(--color1);
 }
-.w20{
-    width: 20%;
+
+
+#contacto button {
+  background: #fff;
+}
+#contacto button.delete {
+  background: var(--color6);
+  color: #fff;
+  border-color: transparent;
+}
+#contacto button.delete:hover {
+  background: #c0392b;
+  box-shadow: 0 6px 14px rgba(192,57,43,.25);
 }

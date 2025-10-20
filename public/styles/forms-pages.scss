@@ -1,0 +1,152 @@
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background-color: var(--color3);
+  border-radius: 16px;
+  border: 1px solid var(--color9);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  margin: 40px auto;
+  color: var(--color4);
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+
+label {
+  display: block;
+  font-weight: 600;
+  color: var(--color4);
+  margin-bottom: 6px;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="url"],
+textarea,
+select {
+  width: 95%;
+  padding: 10px 14px;
+  border: 1px solid var(--color9);
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: #fff;
+  color: var(--color4);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: var(--color1);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color1);
+  box-shadow: 0 0 0 3px rgba(11, 133, 203, 0.25); 
+}
+
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color1);
+  cursor: pointer;
+}
+
+
+.error {
+  color: var(--color6);
+  font-size: 0.9rem;
+  margin-top: -4px;
+}
+
+
+.success {
+  color: var(--color5);
+}
+.warning {
+  color: var(--color7);
+}
+.info {
+  color: var(--color8);
+}
+
+
+button {
+  align-self: flex-end;
+  background-color: var(--color1);
+  color: white;
+  font-weight: 600;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--color2);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+button.btn--success {
+  background-color: var(--color5);
+}
+button.btn--success:hover {
+  background-color: #219653;
+}
+
+button.btn--danger {
+  background-color: var(--color6);
+}
+button.btn--danger:hover {
+  background-color: #c0392b;
+}
+
+button.btn--ghost {
+  background: transparent;
+  border: 1px solid var(--color1);
+  color: var(--color1);
+}
+button.btn--ghost:hover {
+  background-color: rgba(11, 133, 203, 0.08);
+}
+
+
+form > div {
+  display: flex;
+  flex-direction: column;
+}
+
+
+::placeholder {
+  color: var(--color9);
+}
+
+
+@media (max-width: 600px) {
+  form {
+    padding: 16px;
+    border-radius: 12px;
+  }
+  button {
+    width: 100%;
+  }
+}
