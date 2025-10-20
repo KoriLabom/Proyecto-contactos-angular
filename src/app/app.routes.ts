@@ -4,7 +4,7 @@ import { RegisterComponente } from './components/register-componente/register-co
 import { LoggedLayout } from './logged-layout/logged-layout';
 import { ContactosComponente } from './components/contactos-componente/contactos-componente';
 import { NewEditContact } from './pages/new-edit-contact/new-edit-contact';
-
+import { onlyUserGuard } from './guards/only-logged-user-guard';
 export const routes: Routes = [
     {
         path: "login",
@@ -19,21 +19,30 @@ export const routes: Routes = [
         component: LoggedLayout,
         children: [
             {
+                path: "",
+                redirectTo: "contactos",
+                pathMatch: "full"
+            },
+            {
                 path: "contactos",
                 component: ContactosComponente
             }
-        ]
+        ],
+        canActivate: [onlyUserGuard]
         
     },
     {
         path: "contactos/new",
-        component: NewEditContact
+        component: NewEditContact,
+        canActivate: [onlyUserGuard]
     },
     {
         path: "contacts/:idContacto/edit",
-        component: NewEditContact
+        component: NewEditContact,
+        canActivate: [onlyUserGuard]
       },{
         path: "contacts/new",
-        component: NewEditContact
+        component: NewEditContact,
+        canActivate: [onlyUserGuard]
       },
 ];

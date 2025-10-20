@@ -1,15 +1,12 @@
-import { inject } from '@angular/core';
-import { CanActivateChildFn, RedirectCommand, Router } from '@angular/router';
+import { CanActivateFn, RedirectCommand, Router, UrlTree } from '@angular/router';
 import { AuthService } from '../services/auth-service';
+import { inject } from '@angular/core';
 
-export const onlyLoggedUserGuard: CanActivateChildFn = (childRoute, state) => {
-  const auth = inject(AuthService);
-  const router = inject(Router);
-  if(!auth.token){
-    const newPath = router.parseUrl("/login");
-    return new RedirectCommand(newPath, {
-      skipLocationChange: true,
-    });
-  }
-  return true;
+/** Guard que verifica que un usuario se encuentre logueado */
+export const onlyUserGuard: CanActivateFn = (route, state) => {
+  const authService = inject(AuthService)
+  if (authService.token !== null) return true;
+  const router = inject(Router)
+  const urlTree: UrlTree = router.parseUrl('/login');
+  return new RedirectCommand(urlTree, { skipLocationChange: true });
 };

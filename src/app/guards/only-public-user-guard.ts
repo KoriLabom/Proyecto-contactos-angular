@@ -1,15 +1,12 @@
-import { inject } from '@angular/core';
-import { CanActivateFn, RedirectCommand, Router } from '@angular/router';
+import { CanActivateFn, RedirectCommand, Router, UrlTree } from '@angular/router';
 import { AuthService } from '../services/auth-service';
+import { inject } from '@angular/core';
 
-export const onlyPublicUserGuard: CanActivateFn = (route, state) => {
-  const auth = inject(AuthService);
-  const router = inject(Router);
-  if(auth.token){
-    const newPath = router.parseUrl("/");
-    return new RedirectCommand(newPath, {
-      skipLocationChange: true,
-    });
-  }
-  return true;
+/** Guard que verifica que un usuario se encuentre deslogueado */
+export const onlyGuestGuard: CanActivateFn = (route, state) => {
+  const authService = inject(AuthService)
+  if (!authService.token) return true;
+  const router = inject(Router)
+  const urlTree: UrlTree = router.parseUrl('/contacts');
+  return new RedirectCommand(urlTree);
 };
