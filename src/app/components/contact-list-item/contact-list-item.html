@@ -5,7 +5,7 @@
   <span class="w10"></span>
   <span class="w15 acciones">
     <button class="delete" (click)="contactsService.deleteContact(contact().id)">Delete</button>
-    <a [routerLink]="['/contacts', contact().id, 'edit']">Edit</a>
+    <a class="edit" [routerLink]="['/contacts', contact().id, 'edit']">Edit</a>
     <a [routerLink]="['/contacts', contact().id]">Details</a>
   </span>
 </div>
