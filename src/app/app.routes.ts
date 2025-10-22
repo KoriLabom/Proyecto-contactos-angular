@@ -7,14 +7,17 @@ import { NewEditContact } from './pages/new-edit-contact/new-edit-contact';
 import { onlyUserGuard } from './guards/only-logged-user-guard';
 import { ContactDetailsPage } from './pages/contact-details-page/contact-details-page';
 import { GroupsComponent } from './pages/groups-component/groups-component';
+import { onlyGuestGuard } from './guards/only-public-user-guard';
 export const routes: Routes = [
     {
         path: "login",
-        component: LoginComponente
+        component: LoginComponente,
+        canActivate: [onlyGuestGuard]
     },
     {
         path: "register",
-        component: RegisterComponente
+        component: RegisterComponente,
+        canActivate: [onlyGuestGuard]
     },
     {
         path: "",
